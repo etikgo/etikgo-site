@@ -50,7 +50,9 @@ h1{font-size:clamp(38px,6vw,62px);line-height:1.05;letter-spacing:-.03em;margin:
 .row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px solid #f0f0f0}
 .ok{color:#fff;background:var(--g2);border-radius:999px;padding:3px 10px;font-weight:700;font-size:12px}
 .no{color:#fff;background:#D9534F;border-radius:999px;padding:3px 10px;font-weight:700;font-size:12px}
-.tag{display:inline-block;background:#FFF3D6;color:#8A5A00;border-radius:8px;padding:3px 8px;margin:3px 3px 0 0;font-size:11px;font-weight:600}
+.tag{display:inline-block;border-radius:8px;padding:3px 8px;margin:3px 3px 0 0;font-size:11px;font-weight:600}
+.tag.warn{background:#FFF3D6;color:#8A5A00}
+.tag.add{background:#EEF0F3;color:#55607A}
 .verdict{margin:0 14px;background:var(--g2);color:#fff;border-radius:16px;padding:14px;font-weight:700;display:flex;gap:10px;align-items:center}
 .verdict span{font-size:24px}
 /* sections */
@@ -114,7 +116,7 @@ footer a{color:var(--muted)}
    <div class="row"><span>Aino</span><span class="ok">✓</span></div>
    <div class="row"><span>Ella · <span data-i="coeliac">keliakia</span></span><span class="no">✗</span></div>
    <div class="row"><span>Leo · <span data-i="milk">maitoallergia</span></span><span class="ok">✓</span></div>
-   <div style="margin-top:8px"><span class="tag">E471</span><span class="tag" data-i="maynuts">Voi sisältää pähkinöitä</span></div>
+   <div style="margin-top:8px"><span class="tag warn">⚠ <span data-i="maynuts">Voi sisältää pähkinöitä</span></span><span class="tag add">E471</span></div>
   </div>
   <div class="verdict"><span>🏷️</span><div data-i="verdict">Sopii Ainolle ja Leolle. Ellalle löytyy parempi vaihtoehto.</div></div>
  </div></div>
