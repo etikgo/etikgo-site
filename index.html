@@ -203,7 +203,7 @@ function kopioi(b){var a='etikgo.app@outlook.com',d=T[document.documentElement.l
  function ok(){b.textContent=d.copied;setTimeout(function(){b.textContent=d.copy},1800)}
  if(navigator.clipboard){navigator.clipboard.writeText(a).then(ok,function(){prompt('',a)})}else{prompt('',a)}}
 function setLang(l){
- if(!T[l])l='en';
+ if(!Object.prototype.hasOwnProperty.call(T,l))l='en';
  var d=T[l];
  document.documentElement.lang=l;
  document.querySelectorAll('[data-i]').forEach(function(e){var v=d[e.getAttribute('data-i')];if(v!=null)e.textContent=v;});
