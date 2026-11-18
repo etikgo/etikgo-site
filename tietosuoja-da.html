@@ -36,7 +36,7 @@ a{color:var(--g2)}
 </div></nav>
 <main><div class="wrap">
 <h1>Privatlivspolitik</h1>
-<p class="upd">Mobilappen EtikGo · Opdateret 13.11.2026</p>
+<p class="upd">Mobilappen EtikGo · Opdateret 18.11.2026</p>
 <p class="note">Dette er en oversættelse. Ved uoverensstemmelser gælder den finske version.</p>
 <div class="box"><b>Kort fortalt:</b> EtikGo kræver ingen konto eller login, viser ingen reklamer og sporer dig ikke. Din profil, dine familiemedlemmer, din historik og din indkøbsliste gemmes kun på din egen enhed. Når du scanner et produkt, slås stregkoden op i den åbne database Open Food Facts. Stregkoder slås også op i EtikGos egen produktdatabase. Hvis du tilføjer et manglende produkt, sendes oplysningerne og billederne til os til kontrol.</div>
 <h2>1. Dataansvarlig</h2>
@@ -47,13 +47,14 @@ a{color:var(--g2)}
  <li><b>Stregkoder og produktsøgninger.</b> Når du scanner en stregkode eller søger et bedre alternativ, sender appen stregkoden eller produktkategorien til Open Food Facts (Frankrig) for at hente produktdata. Din profil, dine allergier eller andre personoplysninger sendes aldrig med. Som enhver webtjeneste kan Open Food Facts teknisk se enhedens IP-adresse. Se <a href="https://world.openfoodfacts.org/privacy" target="_blank" rel="noopener">Open Food Facts’ privatlivspolitik</a>.</li>
  <li><b>EtikGos produktdatabase.</b> Stregkoder slås også op i EtikGos egen database, og appen henter en kopi af dens produkter til telefonen, så søgningen også virker uden netværk. Din profil og andre personoplysninger sendes aldrig med. Serveren kører hos Cloudflare (Cloudflare, Inc.), som af tekniske grunde kan se enhedens IP-adresse.</li>
  <li><b>Tilføje og bekræfte produkter (frivilligt).</b> Hvis du tilføjer et manglende produkt eller foreslår en rettelse, sender appen produktets stregkode, navn, mærke, ingrediensliste, et billede af ingredienslisten, et billede af produktet og et tilfældigt enheds-id til EtikGos server. Id’et oprettes på telefonen og afslører ikke, hvem du er. Det bruges til at forhindre misbrug og flere stemmer fra samme enhed. Vi kontrollerer oplysningerne, før de vises for andre. Andre brugere ser kun produktets tekstoplysninger, aldrig billederne eller id’et. Billederne slettes automatisk 30 dage efter, at produktet er godkendt eller afvist. Fotografér kun produktet, ikke personer eller noget personligt. Når du bekræfter et produkt, som andre har tilføjet, sendes kun dit svar (passer / passer ikke) og enheds-id’et. Et billede taget til bekræftelse sammenlignes på telefonen og forlader den aldrig. Cloudflare behandler serverdata på vores vegne (databehandler), og vilkårene indeholder EU’s standardkontraktbestemmelser.</li>
- <li><b>Kameraet</b> bruges til at læse stregkoder og ingredienslister. Billedet af en ingrediensliste omdannes til tekst på selve telefonen og hverken gemmes eller sendes. Billeder sendes kun, hvis du selv tilføjer et produkt til EtikGos database (se ovenfor).</li>
+ <li><b>Præcis genkendelse (frivillig, slået fra som standard).</b> Hvis du slår præcis genkendelse til i indstillingerne, sendes billedet af ingredienslisten eller næringstabellen via EtikGos server til Anthropics (Anthropic, PBC, USA) AI Claude for at blive omdannet til tekst, sammen med den tilfældige enheds-id. Billedet gemmes ikke på EtikGos server, og Anthropic bruger det ikke til at træne sin AI. Anthropic kan gemme forespørgsler i begrænset tid for at forhindre misbrug. Id’et bruges til at tælle månedsgrænsen (100 billeder). Anthropic er databehandler, og overførsler sker på grundlag af EU’s standardkontraktbestemmelser. Fotografér kun emballagens tekst. Du kan slå funktionen fra når som helst.</li>
+ <li><b>Kameraet</b> bruges til at læse stregkoder og ingredienslister. Billedet af en ingrediensliste omdannes til tekst på selve telefonen og hverken gemmes eller sendes. Billeder sendes kun, hvis du selv tilføjer et produkt til EtikGos database (se ovenfor). Undtagelse: Hvis du slår præcis genkendelse til, sendes billedet for at blive læst (se ovenfor).</li>
  <li><b>Oplæsning</b> bruger enhedens indbyggede talesyntese.</li>
  <li><b>Feedback og fejlrapporter.</b> Hvis du rapporterer en fejl, åbner appen din egen mailapp med en udfyldt besked. Den sendes kun, hvis du sender den. Vi modtager så din e-mailadresse og besked og bruger dem kun til at svare og forbedre appen.</li>
 </ul>
 <h2>3. Det gør vi ikke</h2>
 <ul>
- <li>Vi indsamler ikke analysedata eller placeringsdata. Det tilfældige enheds-id bruges kun, hvis du selv tilføjer eller bekræfter et produkt.</li>
+ <li>Vi indsamler ikke analysedata eller placeringsdata. Det tilfældige enheds-id bruges kun, hvis du selv tilføjer eller bekræfter et produkt. Id’et bruges også til månedsgrænsen for præcis genkendelse og til at tælle Plus-gaver (tilføjede produkter og invitationskoder), når du åbner fanen Profil.</li>
  <li>Ingen reklamer, og vi sælger eller deler aldrig data.</li>
  <li>Vi bruger aldrig dine helbredsoplysninger, fordi de aldrig forlader din enhed.</li>
 </ul>
