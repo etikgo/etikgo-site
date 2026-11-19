@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>EtikGo – jaettu profiili</title>
+<meta property="og:title" content="EtikGo – jaettu profiili / shared profile">
+<meta property="og:description" content="Avaa EtikGossa / Open in EtikGo">
+<meta property="og:image" content="https://etikgo.com/img/og.png">
+<meta name="theme-color" content="#1FA35F">
+<link rel="icon" href="../img/favicon.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<style>
+:root{--g1:#0E6B3F;--g2:#1FA35F;--ink:#14213D;--muted:#55607A;--bg:#FAFAF7;--card:#FFFFFF;--line:#E6E3DB}
+@media (prefers-color-scheme: dark){:root{--ink:#E4ECE7;--muted:#9AADA3;--bg:#111815;--card:#1A231E;--line:#2E3B34}}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+main{max-width:460px;margin:0 auto;padding:40px 16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;margin-bottom:28px}
+.brand img{width:34px;height:34px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+h1{font-size:24px;margin:0 0 8px;letter-spacing:-.01em}
+p{margin:0 0 16px;color:var(--muted)}
+.code{font:700 34px/1.2 ui-monospace,"SF Mono",Menlo,Consolas,monospace;letter-spacing:.08em;text-align:center;padding:16px;border-radius:14px;border:1px dashed var(--line);margin:8px 0 20px;color:var(--ink)}
+.btn{display:block;text-align:center;text-decoration:none;font-weight:700;font-size:17px;padding:15px;border-radius:14px;background:var(--g2);color:#fff;margin-bottom:12px}
+.btn.alt{background:transparent;color:var(--g2);border:1px solid var(--line)}
+ol{padding-left:20px;margin:0;color:var(--muted)}
+li{margin-bottom:6px}
+.err{color:#C0392B}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><img src="../img/icon.svg" alt="" width="34" height="34">EtikGo</div>
+  <div class="card">
+    <h1 id="otsikko"></h1>
+    <p id="selitys"></p>
+    <div class="code" id="koodi" aria-live="polite"></div>
+    <a class="btn" id="avaa" href="#"></a>
+    <a class="btn alt" id="lataa" href="https://etikgo.com/"></a>
+    <ol id="ohje"></ol>
+  </div>
+</main>
+<script>
+(function () {
+  var T = {
+    fi: { o: 'Sinulle on jaettu EtikGo-profiili', s: 'EtikGo kertoo kaupassa viivakoodista heti, sopiiko tuote hänelle.', a: 'Avaa EtikGossa', l: 'Lataa EtikGo', h: ['Jos sovellus ei aukea, avaa EtikGo itse.', 'Profiili → Lisää jaettu profiili.', 'Kirjoita yllä oleva koodi.'], e: 'Linkki on virheellinen. Pyydä uusi linkki.', t: 'Koodi on voimassa 30 päivää.' },
+    sv: { o: 'En EtikGo-profil har delats med dig', s: 'EtikGo visar direkt i butiken utifrån streckkoden om en produkt passar hen.', a: 'Öppna i EtikGo', l: 'Ladda ner EtikGo', h: ['Om appen inte öppnas, öppna EtikGo själv.', 'Profil → Lägg till delad profil.', 'Skriv koden ovan.'], e: 'Länken är ogiltig. Be om en ny länk.', t: 'Koden gäller i 30 dagar.' },
+    en: { o: 'An EtikGo profile has been shared with you', s: 'EtikGo tells you in the shop from the barcode whether a product suits them.', a: 'Open in EtikGo', l: 'Get EtikGo', h: ['If the app does not open, open EtikGo yourself.', 'Profile → Add shared profile.', 'Enter the code above.'], e: 'The link is invalid. Ask for a new link.', t: 'The code is valid for 30 days.' }
+  };
+  var kieli = (navigator.language || 'en').slice(0, 2).toLowerCase();
+  var t = T[kieli] || T.en;
+  document.documentElement.lang = T[kieli] ? kieli : 'en';
+  var MERKIT = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+  var raaka = (new URLSearchParams(location.search).get('k') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+  var ok = raaka.length === 8 && raaka.split('').every(function (c) { return MERKIT.indexOf(c) >= 0; });
+  var $ = function (id) { return document.getElementById(id); };
+  $('otsikko').textContent = t.o;
+  $('lataa').textContent = t.l;
+  if (!ok) {
+    $('selitys').textContent = t.e; $('selitys').className = 'err';
+    $('koodi').style.display = 'none'; $('avaa').style.display = 'none';
+    return;
+  }
+  var nakyva = raaka.slice(0, 4) + '-' + raaka.slice(4);
+  var sovellus = 'etikgo://p/' + raaka;
+  $('selitys').textContent = t.s + ' ' + t.t;
+  $('koodi').textContent = nakyva;
+  $('avaa').textContent = t.a;
+  $('avaa').href = sovellus;
+  t.h.forEach(function (x) { var li = document.createElement('li'); li.textContent = x; $('ohje').appendChild(li); });
+  // Puhelimella yritetään avata sovellus heti
+  if (/iPhone|iPad|Android/i.test(navigator.userAgent)) setTimeout(function () { location.href = sovellus; }, 300);
+})();
+</script>
+</body>
+</html>
